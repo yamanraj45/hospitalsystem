@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class='table' >
+    <thead>
+
+        <tr><td>ID</td>
+            <td>Full Name</td>
+            <td>Phone Number</td>
+            <td>Location</td>
+            <td>Mobile Number</td>
+            <td>Blood Group</td>
+            <td>  <a href="{% url 'index' %}" class="btn btn-primary">Form</a>  </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for patient in patientdetails %}
+        <tr>
+            <td>{{patient.id}}</td>
+            <td>{{patient.name}}</td>
+            <td>{{patient.blood_group}}</td>
+            <td>{{patient.location}}</td>
+            <td>{{patient.phone_number}}</td>
+            <td>{{patient.ward_type}}</td>
+            <td><a href="{% url 'update' patient.id %}" class="btn"><i class="fa fa-edit "></i></a>
+                <!-- <form action="{% url 'delete' patient.id %}" method="POST" class="d-inline">
+                    {% csrf_token %}
+                    <button class="btn" type="submit">
+                    <i class="fa fa-trash"> </i>
+                </button> -->
+                <!-- </form> -->
+                <a href="{% url 'delete' patient.id %}" class="btn"><i class="fa fa-trash "></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+    
+{% endblock content %}
