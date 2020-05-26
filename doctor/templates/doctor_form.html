@@ -1,0 +1,12 @@
+{% extends "basedoctor.html" %}
+{% load crispy_forms_tags  %}
+
+
+{% block content %}
+<form action="" autocomplete="off"  method="POST">
+    {% csrf_token %}
+    {{forms|crispy}}
+    <button class="btn btn-success" type="submit"> Submit </button>
+</form>
+ 
+{% endblock content %}

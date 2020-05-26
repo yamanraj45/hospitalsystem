@@ -2,27 +2,103 @@
 
 {% block content %}
 
+    <div class="container">
+        
+<div class="row">
+    <div class="col-10">
+        <form action="{% url 'search' %}" method="GET" class="form-group">
+            
+            <input type="search" autocomplete="off" name='patient_search' 
+            value="{{request.GET.patient_search}}" class="form-control" placeholder='Search for Patient' >
+        </div>
+        
+    <div class="col-2">
+        <button type="submit" class="btn btn-success rols-md-4" > <i class="fa fa-search"></i> </button>
+    </div>
+        </form>
+    
+</div>
+
+
+<div>
+   
+        {% for message in messages %}
+        <li style="color: red;"> {{message}} </li>
+        {% endfor %}
+</div><br>
+<!-- For Showing Search Quries-->
+<div>
+    {% if found %}
+        {% for item in found %}
+    <table class='table' >
+        <thead>
+    
+            <tr><td>ID</td>
+                <td>Full Name</td>
+                <td>Blood Group</td>
+                <td>Location</td>
+                <td>Mobile Number</td>
+                <td>Ward</td>
+                <td>Doctor</td>
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>{{item.id}}</a> </td>
+                <td><a href="{% url 'patient_detail' patient.id %}">{{item.name}}</a></td>
+                <td>{{item.blood_group}}</td>
+                <td>{{item.location}}</td>
+                <td>{{item.phone_number}}</td>
+                <td>{{item.ward_type}}</td>
+                <td>{{item.doctor}}</td>
+    
+                <td><a href="{% url 'update' patient.id %}" class="btn"><i class="fa fa-edit "></i></a>
+                 <a href="{% url 'delete' patient.id %}" class="btn"><i class="fa fa-trash "></i></a>
+                </td>
+            </tr>
+            
+        </tbody>
+    
+    </table>
+     
+     {% endfor %}
+    {% endif %}
+</div>
+
+
+
+
+<hr>
+        
+        <!-- For showing list item -->
+
+
 <table class='table' >
     <thead>
 
         <tr><td>ID</td>
             <td>Full Name</td>
-            <td>Phone Number</td>
+            <td>Blood Group</td>
             <td>Location</td>
             <td>Mobile Number</td>
-            <td>Blood Group</td>
+            <td>Ward</td>
+            <td>Doctor</td>
             <td>  <a href="{% url 'index' %}" class="btn btn-primary">Form</a>  </td>
         </tr>
     </thead>
     <tbody>
         {% for patient in patientdetails %}
         <tr>
-            <td>{{patient.id}}</td>
-            <td>{{patient.name}}</td>
+            <td>{{patient.id}}</a> </td>
+            <td><a href="{% url 'patient_detail' patient.id %}">{{patient.name}}</a></td>
             <td>{{patient.blood_group}}</td>
             <td>{{patient.location}}</td>
             <td>{{patient.phone_number}}</td>
             <td>{{patient.ward_type}}</td>
+            <td>{{patient.doctor}}</td>
+
             <td><a href="{% url 'update' patient.id %}" class="btn"><i class="fa fa-edit "></i></a>
                 <!-- <form action="{% url 'delete' patient.id %}" method="POST" class="d-inline">
                     {% csrf_token %}

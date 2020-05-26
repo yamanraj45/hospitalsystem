@@ -1,4 +1,5 @@
 from django.db import models
+from doctor.models import DoctorDetail
 
 class ward(models.Model):
     ward_room = models.CharField(max_length=30)
@@ -13,8 +14,22 @@ class detail(models.Model):
     blood_group = models.CharField(max_length=3)
     location = models.CharField(max_length=100)
     ward_type = models.ForeignKey(ward,on_delete=models.CASCADE)
+    doctor = models.ForeignKey(DoctorDetail,on_delete=models.CASCADE)
+    
 
     def __str__(self):
         return self.name
-    
 
+
+class appointment(models.Model):
+    date = models.DateField()
+    time = models.TimeField()
+    doctor = models.ForeignKey(DoctorDetail,on_delete=models.CASCADE)
+    patient_name = models.OneToOneField(
+        detail,
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
+    def __str__(self):
+        return "%s Appointment With %s on %s in %s " % (self.patient_name, self.doctor, self.date, self.time)
+    

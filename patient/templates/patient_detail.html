@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-8">
+        
+<h1>{{detail.name}}</h1><br>
+Blood Group = {{detail.blood_group}} <br>
+Ward Type = {{detail.ward_type}}<br>
+Phone Number= {{detail.phone_number}} <br>
+Location = {{detail.location}} <br>
+Current Doctor = {{detail.doctor}} 
+    </div>
+    <div class="col-4">
+        <a href='' class="btn btn-success rols-md-4" > Make a Appointment</a>
+    </div>
+</div>
+<br> <br>
+<hr>
+
+
+<div class=''>
+    <div class="jumbotron ">
+        <h1 class="display-4">Appointment History</h1>
+            <table class="table mt-5">
+                <thead>
+                    <tr>
+                        <td>Date</td>
+                        <td>Time</td>
+                        <td>Doctor</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+            </table>
+        <hr class="my-4">
+      
+      </div>
+</div>
+    
+
+
+{% endblock content %}
