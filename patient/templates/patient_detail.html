@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <div class="row">
     <div class="col-8">
         
@@ -24,7 +23,7 @@ Current Doctor = {{detail.doctor}}
     <div class="jumbotron ">
         <h1 class="display-4">Appointment History</h1>
             <table class="table mt-5">
-                <thead>
+                <thead style="background-color: brown;color: white;">
                     <tr>
                         <td>Date</td>
                         <td>Time</td>
@@ -32,6 +31,16 @@ Current Doctor = {{detail.doctor}}
                         <td>Description</td>
                     </tr>
                 </thead>
+                <tbody>
+                   {% for appointment in appointments %}
+                    <tr>
+                        <td>{{appointment.date}}</td>
+                        <td>{{appointment.time}}</td>
+                        <td>{{appointment.doctor}}</td>
+                        <td>{{appointment.Description}}</td>
+                    </tr>
+                   {% endfor %}
+                </tbody>
             </table>
         <hr class="my-4">
       

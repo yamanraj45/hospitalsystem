@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import PatientForm,AppointmentForm
 from .models import detail
+from .models import appointment as ap
 from django.db.models import Q
 from django.contrib import messages 
 
@@ -43,8 +44,14 @@ def delete(request,id):
 
 def patient_detail(request,id):
     detailpatient = detail.objects.get(pk=id)
+    
+    
+    appointment_detail= ap.objects.filter(patient_name=detailpatient)
+    print(appointment_detail)
     context = {
-        "detail":detailpatient
+        "detail":detailpatient,
+        "appointments":appointment_detail
+        
     } 
     return render(request,'patient_detail.html',context)
     
@@ -52,18 +59,25 @@ def patient_detail(request,id):
 def search(request):
     if request.method== 'GET':
         search = request.GET.get('patient_search')
-        print(search)
+        
 
         if search:
 
             match = detail.objects.filter(Q(name__icontains=search)| Q(id__icontains=search))
             if match:
-                print("done")
-                return render(request, 'patient_list.html',{'found':match})
+                contextsearch={
+                    'found':match
+                }
+                print(match)
+                print("done")  #working upto here//// the line below is showing error
+                return render(request,'patient_list.html',contextsearch)
             else:
-                print("em")
+                
                 messages.error(request,'No Result Found')
                 
         else:
             return redirect('list/')
     return render(request,'patient_list.html')
+
+def futurehomepage(request):
+    return render(request,'homepage.html')

@@ -25,10 +25,9 @@ class appointment(models.Model):
     date = models.DateField()
     time = models.TimeField()
     doctor = models.ForeignKey(DoctorDetail,on_delete=models.CASCADE)
-    patient_name = models.OneToOneField(
+    patient_name = models.ForeignKey(
         detail,
-        on_delete=models.CASCADE,
-        primary_key=True,
+        on_delete=models.CASCADE
     )
     def __str__(self):
         return "%s Appointment With %s on %s in %s " % (self.patient_name, self.doctor, self.date, self.time)
