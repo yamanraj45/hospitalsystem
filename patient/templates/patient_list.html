@@ -23,13 +23,17 @@
 <div>
    
         {% for message in messages %}
-        <li style="color: red;"> {{message}} </li>
+        <div class="row">
+            <div class="col-8"> <li style="color: red;"> {{message}} </li></div>
+            <div class="col-4"><a href="{% url 'list' %}" class="btn btn-lg btn-primary" >Back To List </a></div>        
+        </div>
+
         {% endfor %}
 </div><br>
 <!-- For Showing Search Quries-->
 <div>
     {% if found %}
-        {% for item in found %}
+        
         
     <table class='table' >
         <thead>
@@ -44,6 +48,7 @@
                 
             </tr>
         </thead>
+        {% for item in found %}
         <tbody>
             
             <tr>
@@ -62,10 +67,10 @@
             </tr>
             
         </tbody>
-    
+        {% endfor %}
     </table>
      
-         {% endfor %}
+         
     
 </div>
 
@@ -87,7 +92,7 @@
             <td>Mobile Number</td>
             <td>Ward</td>
             <td>Doctor</td>
-            <td>  <a href="{% url 'index' %}" class="btn btn-primary">Form</a>  </td>
+            <td>  <a href="{% url 'form_patient' %}" class="btn btn-primary">Form</a>  </td>
         </tr>
     </thead>
     <tbody>

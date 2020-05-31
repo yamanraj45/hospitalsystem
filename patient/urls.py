@@ -1,13 +1,15 @@
 from django.urls import path
 from . import views
+from doctor import views as dviews
 
 urlpatterns=[
-    path('',views.index,name='index'),
+    
+    path('formpatient',views.form_patient,name='form_patient'),
     path('list/',views.patient_list,name='list'),
-    path('<int:id>/',views.index, name='update'),
+    path('<int:id>/',views.form_patient, name='update'),
     path('delete/<int:id>/',views.delete, name='delete'),
     path('patientdetail/<int:id>',views.patient_detail,name='patient_detail'),
     path('search/',views.search,name='search'),
-    path('appointment/',views.appointment, name='appoint'),
-    path('future/',views.futurehomepage,name='homepage')
+    path('appointment/',dviews.appointment, name='appoint'),
+    path('',views.futurehomepage,name='index')
 ]

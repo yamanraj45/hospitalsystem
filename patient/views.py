@@ -4,13 +4,9 @@ from .models import detail
 from .models import appointment as ap
 from django.db.models import Q
 from django.contrib import messages 
+   
 
-
-def appointment(request):
-    form = AppointmentForm
-    return render(request, 'appointment.html',{'form':form})
-
-def index(request, id=0):
+def form_patient(request, id=0):
     if request.method == "GET":
         if id == 0:
             form = PatientForm()

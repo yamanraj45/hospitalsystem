@@ -13,8 +13,8 @@ class PatientForm(forms.ModelForm):
             self.fields['ward_type'].empty_label ="Select Ward Type"
 
 
-class AppointmentForm(forms.ModelForm):
-
-    class Meta:
-        model = appointment
-        fields=('date','time','doctor','patient_name')
+class AppointmentForm(forms.Form):
+    patientId = forms.CharField(label='Enter Patient Id', max_length='15', widget= forms.TextInput(attrs={'placeholder':'Enter Patient ID'}))
+    date = forms.DateField(label='Enter date For Appointment')
+    time = forms.TimeField(label='Enter TIme Field')
+    doctor = forms.CharField(label='Enter doctor Name')

@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
 urlpatterns=[
-    path('',views.doctor_list,name='doctor_list')
+    path('',views.doctor_list,name='doctor_list'),
+    path('search', views.search, name='checkpatientid')
 ]

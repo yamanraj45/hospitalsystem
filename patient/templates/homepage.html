@@ -22,7 +22,7 @@
       <div class="card-body">
         <h4 class="card-title">Add Patient</h4>
         <p class="card-text">Add Patient to Record Of The Company</p>
-        <a href="{% url 'index' %}" class="btn btn-primary">Click Here</a>
+        <a href="{% url 'form_patient' %}" class="btn btn-primary">Click Here</a>
       </div>
     </div>
 
@@ -34,7 +34,7 @@
         <div class="card-body">
           <h4 class="card-title">List Patient</h4>
           <p class="card-text">Open List of the Patient in The Company</p>
-          <a href="#" class="btn btn-primary">See List</a>
+          <a href="{% url 'list' %}" class="btn btn-primary">See List</a>
         </div>
       </div>
     </div>
@@ -48,7 +48,7 @@
         <div class="card-body">
           <h4 class="card-title">Make Appointment</h4>
           <p class="card-text">Make Appointment of the Patient With the Doctor</p>
-          <a href="#" class="btn btn-primary">Make Appointment</a>
+          <a href="{% url 'appoint' %}" class="btn btn-primary">Make Appointment</a>
         </div>
       </div>
     </div>
